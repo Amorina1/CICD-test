@@ -48,3 +48,4 @@ jobs:
             docker rm client || true
             docker run -d --name client -p 80:3000 ghcr.io/amorina1/react-client:latest
             
+            
