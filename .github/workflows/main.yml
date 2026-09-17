@@ -28,7 +28,7 @@ jobs:
         run: docker compose -f docker-compose.prod.yml push
 
   deploy:
-    needs: build
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: ssh and redeploy
