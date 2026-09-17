@@ -23,3 +23,7 @@ def test_response():
     # https://developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control
 
     return response
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
