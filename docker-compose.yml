@@ -1,9 +1,9 @@
 version: '3'
- 
+
 services:
   api:
     build: api
-    image: amorina1/flask-api:latest
+    image: ghcr.io/amorina1/flask-api:latest
     command: ["flask", "run", "--host=0.0.0.0"]
     volumes:
       - ./api:/backend
@@ -12,10 +12,10 @@ services:
       - FLASK_APP=app.py
     ports:
       - "5000:5000"
- 
-    client:
+
+  client:
     build: client
-    image: amorina1/react-client:latest
+    image: ghcr.io/amorina1/react-client:latest
     command: ["npm", "start"]
     volumes:
       - ./client:/frontend
@@ -26,6 +26,6 @@ services:
       - "3000:3000"
     depends_on:
       - api
- 
+
 volumes:
   node-modules:
