@@ -1,7 +1,17 @@
-FROM python:3.7
-RUN mkdir /backend
-WORKDIR /backend
-COPY requirements.txt /backend/requirements.txt
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+ 
 COPY . .
+ 
+USER appuser
+
+EXPOSE 5000
+ 
+CMD ["python", "app.py"]
