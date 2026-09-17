@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api:
+    build: api
+    image: ghcr.io/amorina1/flask-api:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+
+  client:
+    build: client
+    image: ghcr.io/amorina1/react-client:latest
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - api
